@@ -12,6 +12,10 @@ class Course extends Model
     public function group (){
         return $this->hasMany(Group::class);
     }
+
+    public function lectures(){
+        return $this->hasMany(Lecture::class);
+    }
 }
 
 

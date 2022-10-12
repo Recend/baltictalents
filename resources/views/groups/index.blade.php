@@ -27,7 +27,7 @@
                     <td><a class="btn btn-primary" href="{{ route('group.lectures', $group->id) }}">Paskaitos</a></td>
                     <td><a class="btn btn-success" href="">Studentai</a></td>
                     <td>
-                        @can('update', $group)
+                        @can('delete', $group)
                     <form action="{{ route('groups.destroy', $group->id) }}" method="post">
                         @csrf
                         @method('DELETE')

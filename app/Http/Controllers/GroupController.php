@@ -60,7 +60,9 @@ class GroupController extends Controller
      */
     public function edit(Group $group)
     {
-        //
+        $course=Course::all();
+        $user=User::all();
+        return view("groups.update",['group'=>$group, 'course'=>$course, 'user'=>$user]);
     }
 
     /**
@@ -72,7 +74,13 @@ class GroupController extends Controller
      */
     public function update(Request $request, Group $group)
     {
-        //
+        $group->course_id=$request->course_id;
+        $group->teacher_id=$request->teacher_id;
+        $group->name=$request->name;
+        $group->begins=$request->begins;
+        $group->ends=$request->ends;
+        $group->save();
+        return redirect()->route('groups.index');
     }
 
     /**

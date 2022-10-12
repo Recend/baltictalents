@@ -13,14 +13,16 @@
 
             @foreach($lectures as $lecture)
 
-        @if($lecture->group_id == $lecture->course)
+
                 <tr>
-                    <td>{{ $lecture->name }}</td>
+
+                    <td></td>
+
                     <td></td>
                     </tr>
 
 
-@endif
+
             @endforeach
             </tbody>
         </table>
