@@ -9,7 +9,12 @@ class Lecture extends Model
 {
     use HasFactory;
     public function file(){
-        return $this->belongsTo(File::class);
+        return $this->hasMany(File::class);
     }
+
+    public function group(){
+        return $this->belongsTo(Group::class);
+    }
+
 
 }

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use App\Models\Group;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class GroupController extends Controller
@@ -14,7 +16,8 @@ class GroupController extends Controller
      */
     public function index()
     {
-        //
+        $groups=Group::with('teacher')->get();
+        return view("groups.index",['groups'=>$groups]);
     }
 
     /**
