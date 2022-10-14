@@ -1,12 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <h1>Dėstytojas {{Auth::user()->name}}</h1>
+        <h1>{{Auth::user()->name}} </h1>
         <table class="table table-striped">
             <thead>
             <tr>
                 <th>Grupės pavadinimas</th>
                 <th>Kurso pavadinimas</th>
+                <th>Stundetų skaičius</th>
                 <th>Kurso pradžia</th>
                 <th>Kurso pabaiga</th>
 
@@ -19,13 +20,14 @@
                 <tr>
                     <td>{{ $group->name }}</td>
                     <td>{{ $group->course->course_name }}</td>
+                    <td>{{ $group->students->count()}}</td>
                     <td>{{ $group->begins }}</td>
                     <td>{{ $group->ends }}</td>
                     @can('update', $group)
                     <td><a class="btn btn-info" href="{{ route('groups.edit', $group->id) }}">Redaguoti</a></td>
                     @endcan
                     <td><a class="btn btn-primary" href="{{ route('group.lectures', $group->id) }}">Paskaitos</a></td>
-                    <td><a class="btn btn-success" href="">Studentai</a></td>
+                    <td><a class="btn btn-success" href="{{ route('group.students', $group->id) }}}">Studentai</a></td>
                     <td>
                         @can('delete', $group)
                     <form action="{{ route('groups.destroy', $group->id) }}" method="post">

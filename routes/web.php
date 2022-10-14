@@ -22,8 +22,11 @@ Route::middleware(['auth'])->group(function (){
 });
 
 
-Route::get('{name}/lectures/',[LectureController::class, 'index'])
+Route::get('/group/lectures/{lecture_id}',[LectureController::class, 'groupLectures'])
     ->name('group.lectures');
+
+Route::get('/group/students/{user_id}',[GroupController::class, 'groupStudents'])
+    ->name('group.students');
 
 
 Auth::routes();

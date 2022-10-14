@@ -18,12 +18,14 @@ class Group extends Model
         return $this->belongsTo(User::class, 'teacher_id');
     }
 
-    public function user (){
-        return $this->hasMany(User::class);
+    public function students(){
+        return $this->hasMany(Group_User::class);
     }
 
     public function lectures (){
         return $this->hasMany(Lecture::class);
     }
+
+
 
 }

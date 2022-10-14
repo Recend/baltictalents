@@ -9,7 +9,7 @@ class Group_User extends Model
 {
     use HasFactory;
     public function students(){
-        return $this->belongsToMany(User::class, 'group_users');
+        return $this->hasMany(User::class);
     }
 
     public function group(){

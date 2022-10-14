@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Course;
 use App\Models\Group;
+use App\Models\Group_User;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -92,5 +93,12 @@ class GroupController extends Controller
     public function destroy(Group $group)
     {
         //
+    }
+
+    public function groupStudents ($user_id){
+        $groups=Group::find($user_id);
+        $students=Group_User::where('user_id', $user_id)->get();
+        $users=User::all();
+        return view('students.index',['students'=>$students, 'groups'=>$groups, 'users'=>$users]);
     }
 }
