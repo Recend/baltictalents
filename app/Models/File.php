@@ -9,7 +9,7 @@ class File extends Model
 {
     use HasFactory;
 
-    public function lectures (){
+    public function lecture (){
         return $this->hasMany(Lecture::class);
     }
 }

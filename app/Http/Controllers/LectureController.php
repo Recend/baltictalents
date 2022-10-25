@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\File;
 use App\Models\Group;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
@@ -27,9 +28,10 @@ class LectureController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Group $group)
     {
-        //
+        $groups=Group::all();
+        return view('lectures.create',['groups'=>$groups]);
     }
 
     /**
@@ -40,7 +42,14 @@ class LectureController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $lecture = new Lecture();
+        $lecture->name = $request->name;
+        $lecture->group_id = $request->group_id;
+        $lecture->data = $request->data;
+        $lecture->about = $request->about;
+        $lecture->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -51,7 +60,8 @@ class LectureController extends Controller
      */
     public function show(Lecture $lecture)
     {
-        //
+        $files=File::all();
+        return view("lectures.show",['files'=>$files, 'lecture'=>$lecture]);
     }
 
     /**
@@ -94,5 +104,8 @@ class LectureController extends Controller
         $lectures=Lecture::where('group_id', $group_id)->get();
         return view('lectures.index',['lectures'=>$lectures, 'group'=>$group]);
     }
+
+
+
 
 }

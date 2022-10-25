@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Group_User extends Model
 {
     use HasFactory;
-    public function students(){
-        return $this->hasMany(User::class);
-    }
+
 
     public function group(){
-        return $this->belongsToMany(Group::class,'group_users');
+        return $this->belongsToMany(Group::class,'group__users');
     }
 
 }

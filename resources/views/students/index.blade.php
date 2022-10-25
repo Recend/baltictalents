@@ -2,6 +2,7 @@
 @section('content')
     <div class="container">
         <h1>Grupė</h1>
+
         <table class="table table-striped">
             <thead>
             <tr>

@@ -18,7 +18,7 @@ class GroupPolicy
      */
     public function viewAny(User $user, Group $group)
     {
-        return $user->id==$group->teacher_id;
+
     }
 
     /**
@@ -30,7 +30,7 @@ class GroupPolicy
      */
     public function view(User $user, Group $group)
     {
-        //
+        return $user->id==$group->teacher_id;
     }
 
     /**
@@ -65,7 +65,7 @@ class GroupPolicy
      */
     public function delete(User $user, Group $group)
     {
-        return $user->role=="teacher";
+
     }
 
     /**
